@@ -41,8 +41,6 @@
 > So you want to lear more about the tech we have used for this project?
 
 <details>
-
-<details>
   <summary>Server</summary>
   <ul>
     <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
