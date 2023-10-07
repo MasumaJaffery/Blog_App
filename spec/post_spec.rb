@@ -1,5 +1,3 @@
-# spec/models/post_spec.rb
-
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
@@ -12,6 +10,13 @@ RSpec.describe Post, type: :model do
     it { should have_many(:likes) }
   end
 
+  describe 'Validations' do
+    it { should validate_presence_of(:title) }
+    it { should validate_length_of(:title).is_at_most(250) }
+    it { should validate_numericality_of(:comments_counter).is_greater_than_or_equal_to(0).only_integer }
+    it { should validate_numericality_of(:likes_counter).is_greater_than_or_equal_to(0).only_integer }
+  end
+
   describe '#update_post_counter' do
     it 'increments the author posts_counter' do
       expect { post.update_post_counter }.to change { user.reload.posts_counter }.by(1)
@@ -20,7 +25,7 @@ RSpec.describe Post, type: :model do
 
   describe '#recent_comments' do
     it 'returns the most recent comments for the post' do
-      comments = create_list(:comment, 10, post:)
+      comments = create_list(:comment, 10, post: post)
 
       recent_comments = post.recent_comments
 
@@ -28,7 +33,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'returns a specified number of recent comments' do
-      comments = create_list(:comment, 10, post:)
+      comments = create_list(:comment, 10, post: post)
 
       recent_comments = post.recent_comments(3)
 

@@ -28,9 +28,9 @@ RSpec.describe User, type: :model do
 
   describe '#recent_posts' do
     it 'returns the most recent posts of the user' do
-      user = User.create(name: 'Test User', posts_counter: 2)
-      post1 = user.posts.create(title: 'Post 1')
-      post2 = user.posts.create(title: 'Post 2')
+      user = create(:user)
+      post1 = create(:post, author: user, title: 'Post 1')
+      post2 = create(:post, author: user, title: 'Post 2')
 
       recent_posts = user.recent_posts(1)
 
@@ -39,10 +39,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns up to the specified limit of recent posts' do
-      user = User.create(name: 'Test User', posts_counter: 3)
-      post1 = user.posts.create(title: 'Post 1')
-      post2 = user.posts.create(title: 'Post 2')
-      post3 = user.posts.create(title: 'Post 3')
+      user = create(:user)
+      post1 = create(:post, author: user, title: 'Post 1')
+      post2 = create(:post, author: user, title: 'Post 2')
+      post3 = create(:post, author: user, title: 'Post 3')
 
       recent_posts = user.recent_posts(2)
 
