@@ -25,7 +25,7 @@ RSpec.describe Post, type: :model do
 
   describe '#recent_comments' do
     it 'returns the most recent comments for the post' do
-      comments = create_list(:comment, 10, post: post)
+      comments = create_list(:comment, 10, post:)
 
       recent_comments = post.recent_comments
 
@@ -33,7 +33,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'returns a specified number of recent comments' do
-      comments = create_list(:comment, 10, post: post)
+      comments = create_list(:comment, 10, post:)
 
       recent_comments = post.recent_comments(3)
 
