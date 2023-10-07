@@ -12,7 +12,7 @@ RSpec.describe Like, type: :model do
       let(:post) { create(:post) }
 
       it 'increments the likes_counter of the associated post after creating a like' do
-        like = create(:like, user: user, post: post)
+        create(:like, user:, post:)
         post.reload
 
         expect(post.likes_counter).to eq(1)

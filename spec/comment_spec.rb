@@ -12,7 +12,7 @@ RSpec.describe Comment, type: :model do
 
     describe '#update_comment_count' do
       it 'increments the comments_counter of the associated post' do
-        comment = create(:comment, post: post)
+        create(:comment, post:)
         post.reload
         expect(post.comments_counter).to eq(1)
       end

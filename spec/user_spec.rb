@@ -13,12 +13,11 @@ RSpec.describe User, type: :model do
       expect(user.errors[:name]).to include("can't be blank")
     end
 
-     it 'is invalid if posts_counter is not an integer' do
-     user = User.new(name: 'Jaffery', posts_counter: 'invalid')
-        user.valid? # Ensure validations are run
-        expect(user.errors[:posts_counter]).to include('is not a number') 
+    it 'is invalid if posts_counter is not an integer' do
+      user = User.new(name: 'Jaffery', posts_counter: 'invalid')
+      user.valid? # Ensure validations are run
+      expect(user.errors[:posts_counter]).to include('is not a number')
     end
-      
 
     it 'is invalid if posts_counter is less than 0' do
       user = User.new(name: 'Bob', posts_counter: -1)
@@ -29,27 +28,27 @@ RSpec.describe User, type: :model do
 
   describe '#recent_posts' do
     it 'returns the most recent posts of the user' do
-        user = User.create(name: 'Test User', posts_counter: 2)
-        post1 = user.posts.create(title: 'Post 1')
-        post2 = user.posts.create(title: 'Post 2')
-      
-        recent_posts = user.recent_posts(1)
-      
-        expect(recent_posts).to include(post2)
-        expect(recent_posts).not_to include(post1)
-      end
-      
-      it 'returns up to the specified limit of recent posts' do
-        user = User.create(name: 'Test User', posts_counter: 3)
-        post1 = user.posts.create(title: 'Post 1')
-        post2 = user.posts.create(title: 'Post 2')
-        post3 = user.posts.create(title: 'Post 3')
-      
-        recent_posts = user.recent_posts(2)
-      
-        expect(recent_posts.length).to eq(2)
-        expect(recent_posts).to include(post3, post2)
-        expect(recent_posts).not_to include(post1)
-      end
+      user = User.create(name: 'Test User', posts_counter: 2)
+      post1 = user.posts.create(title: 'Post 1')
+      post2 = user.posts.create(title: 'Post 2')
+
+      recent_posts = user.recent_posts(1)
+
+      expect(recent_posts).to include(post2)
+      expect(recent_posts).not_to include(post1)
+    end
+
+    it 'returns up to the specified limit of recent posts' do
+      user = User.create(name: 'Test User', posts_counter: 3)
+      post1 = user.posts.create(title: 'Post 1')
+      post2 = user.posts.create(title: 'Post 2')
+      post3 = user.posts.create(title: 'Post 3')
+
+      recent_posts = user.recent_posts(2)
+
+      expect(recent_posts.length).to eq(2)
+      expect(recent_posts).to include(post3, post2)
+      expect(recent_posts).not_to include(post1)
+    end
   end
 end
