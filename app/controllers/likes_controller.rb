@@ -1,3 +1,3 @@
 class LikesController < ApplicationController
-end 
+end
 # Feliz Codificacion!
