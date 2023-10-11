@@ -6,11 +6,13 @@
 </head>  
 <body>  
     <h1>Posts</h1>
+     <div class = "container-user">
     <h2>Posts List for User <%= @user.name %></h2>
   <ul>
   <% @posts.each do |post| %>
     <li><%= link_to post.title, user_post_path(@user, post) %></li>
   <% end %>
 </ul>
+</div>
 </body>  
 </html>  
