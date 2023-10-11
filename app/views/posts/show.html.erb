@@ -1,1 +1,14 @@
-<h1>Posts Id</h1>
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>Blog App</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>  
+<body>  
+    <h1>Posts</h1>
+    <h2><%= @post.title %></h2>
+    <p><%= @post.text %></p>
+    <h5>Comments: <%= @post.comments_counter %></h5>
+    <h5>Likes: <%= @post.likes_counter %></h5>
+</body>  
+</html>  
