@@ -8,23 +8,23 @@ RSpec.describe 'Posts', type: :request do
 
   describe 'GET /posts#index' do
     it 'checks If response status was correct' do
-      get user_posts_path(user_id: @user.id, id: @post.id)
+      get user_post_path(user_id: @user.id, id: @post.id)
       expect(response).to have_http_status(200)
     end
 
     it 'checks If a correct template was rendered' do
-      get user_posts_path(user_id: @user.id, id: @post.id)
+      get user_posts_path(user_id: @user.id)
       expect(response).to render_template(:index)
     end
 
     it 'checks if the response body includes correct placeholder text' do
-      get user_posts_path(user_id: @user.id, id: @post.id)
+      get user_post_path(user_id: @user.id, id: @post.id)
       expect(response.body).to include('Posts')
     end
   end
   describe 'GET /posts#show' do
     it 'checks if response status was correct' do
-      get user_posts_path(user_id: @user.id, id: @post.id)
+      get user_post_path(user_id: @user.id, id: @post.id)
       expect(response).to have_http_status(200)
     end
 
@@ -34,7 +34,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'checks if the response body includes correct placeholder text' do
-      get user_posts_path(user_id: @user.id, id: @post.id)
+      get user_post_path(user_id: @user.id, id: @post.id)
       expect(response.body).to include('Posts')
     end
   end
