@@ -53,6 +53,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Add RSpec for testing
   gem 'factory_bot_rails'
+  # Add gem for controller Testing.
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
 end

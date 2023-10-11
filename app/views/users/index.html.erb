@@ -1,1 +1,15 @@
-<h1>Users</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Users</h1>
+    <h2>Users List</h2>
+    <% @users.each do |user| %>
+    <li><%= link_to user.name, user_path(user) %></li>
+    <% end %>
+</ul>
+</body>
+</html>
