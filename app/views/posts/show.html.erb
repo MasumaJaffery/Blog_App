@@ -6,9 +6,17 @@
 </head>  
 <body>  
     <h1>Posts</h1>
+    <div class = "Post_container">
+    <div class = "post_info">
     <h2><%= @post.title %></h2>
     <p><%= @post.text %></p>
-    <h5>Comments: <%= @post.comments_counter %></h5>
+    </div>
+    <div class = "likes">
     <h5>Likes: <%= @post.likes_counter %></h5>
+    </div>
+    <div class = "comments">
+    <h5>Comments: <%= @post.comments_counter %></h5>
+    </div>
+    </div>
 </body>  
 </html>  
