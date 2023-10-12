@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Blog App</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <div class = "container_user">
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= render "shared/header" %>
+<div class="container_user">
   <h2>User Details</h2>
-  <div class = "user_info">
-  <h4>Name: <%= @user.name %></h4>
-  <p>Bio: <%= @user.bio %></p>
-  <h5>Total Posts: <%= @user.posts_counter %></h5>
+  <div class="user_info">
+    <h4>Name: <%= @user.name %></h4>
+    <p>Bio: <%= @user.bio %></p>
+    <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
+    <h2>Posts</h2>
+     <ul>
+  <% @user_posts.each do |post| %>
+    <li>
+      <strong><%= post.title %></strong><br>
+      <%= post.text %>
+      <div class="left">
+        <h5>Likes: <%= post.likes_counter %></h5>
+        <h5>Comments: <%= post.comments_counter %></h5>
+      </div>
+    </li>
+  <% end %>
+</ul>
   </div>
-  </div>
-</body>
-</html>
+  <div class="btn-all-posts">
+  <%= link_to "See All Posts", user_posts_path(user_id: @user.id), class: 'btn-all-posts'%>
+</div>
+</div>
