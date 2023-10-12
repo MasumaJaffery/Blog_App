@@ -3,9 +3,10 @@
 <div class="container_user">
   <h2>User Details</h2>
   <div class="user_info">
+     <%= image_tag @user.photo_url, alt: @user.name %>
     <h4>Name: <%= @user.name %></h4>
+        <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
     <p>Bio: <%= @user.bio %></p>
-    <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
     <h2>Posts</h2>
      <ul>
   <% @user_posts.each do |post| %>

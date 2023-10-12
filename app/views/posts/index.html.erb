@@ -1,16 +1,33 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-<title>Blog App</title> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-</head>  
-<body>  
-    <h1>Posts</h1>
-    <h2>Posts List for User <%= @user.name %></h2>
-    <ul>
-     <% @posts.each do |post| %>
-    <li><%= link_to post.title, user_post_path(@user, post) %></li>
-   <% end %>
-</ul>
-</body>  
-</html>  
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="user-profile">
+    <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
+    <h1><%= @user.name %></h1>
+    <p>Total Posts: <%= @user.posts_counter %></p>
+  </div>
+
+  <h2>Posts List for User <%= @user.name %></h2>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to post.title, user_post_path(@user, post) %>
+         <p><%= post.text %></p>
+        <p>Likes: <%= post.likes_counter %></p>
+         <p>Comments: <%= post.comments_counter %></p>
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>
