@@ -5,24 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-      <%= render "shared/header" %>
-  <div class="user-profile">
-    <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
-    <h1><%= @user.name %></h1>
-    <p>Total Posts: <%= @user.posts_counter %></p>
-  </div>
-
-  <h2>Posts List for User <%= @user.name %></h2>
+  <%= render "shared/header" %>
+  <div class="user-info">
+  <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
+     <div class = "user-info-2">
+    <h3>Name: <%= @user.name %></h3>
+        <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
+    </div>
+    
+    </div>
   <ul>
     <% @posts.each do |post| %>
-      <li>
-        <%= link_to post.title, user_post_path(@user, post) %>
+      <li class = "post-border">
+        <h3><%= link_to post.title, user_post_path(@user, post), class: 'my-link' %></h3>
          <p><%= post.text %></p>
-        <p>Likes: <%= post.likes_counter %></p>
-         <p>Comments: <%= post.comments_counter %></p>
-        <ul>
+          <div class="left">
+        <div class = "likes">
+        <h5>Likes: <%= post.likes_counter %></h5>
+        </div>
+        <div class = "comments">
+        <h5>Comments: <%= post.comments_counter %></h5>
+        </div>
+        </div>
+        <ul class = "comment-container">
           <% post.comments.each do |comment| %>
-            <li>
+            <li class = "comment-align">
               <strong><%= comment.user.name %>:</strong> <%= comment.text %>
             </li>
           <% end %>

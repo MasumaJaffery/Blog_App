@@ -1,18 +1,22 @@
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<h1>Posts</h1>
-<div class="Post_container">
+<%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= render "shared/header" %>
+<div class="post_container">
   <div class="post_info">
-    <h2><%= @post.title %></h2>
-    <p><%= @post.text %></p>
-  </div>
+    <h3><%= @post.title %> by <%= @user.name %></h3>
+     <div class = "left">
   <div class="likes">
     <h5>Likes: <%= @post.likes_counter %></h5>
   </div>
   <div class="comments">
     <h5>Comments: <%= @post.comments_counter %></h5>
-    <ul>
+    </div>
+    </div>
+    <p><%= @post.text %></p>
+  </div>
+  </div>
+    <ul class = "comment-container">
       <% @post.comments.each do |comment| %>
-        <li>
+        <li class = "comment-align">
           <strong><%= comment.user.name %>:</strong>
           <%= comment.text %>
         </li>

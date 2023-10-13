@@ -1,27 +1,36 @@
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+ <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "user", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
 <%= render "shared/header" %>
 <div class="container_user">
-  <h2>User Details</h2>
-  <div class="user_info">
+  <div class="user-info">
      <%= image_tag @user.photo_url, alt: @user.name %>
-    <h4>Name: <%= @user.name %></h4>
+     <div class = "user-info-2">
+    <h3>Name: <%= @user.name %></h3>
         <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
-    <p>Bio: <%= @user.bio %></p>
-    <h2>Posts</h2>
+    <h4>Bio:</h4><p><%= @user.bio %></p>
+    </div>
+    </div>
+       <div class = "post-info">
      <ul>
   <% @user_posts.each do |post| %>
-    <li>
+    <li class = "post-border">
       <strong><%= post.title %></strong><br>
       <%= post.text %>
       <div class="left">
+        <div class = "likes">
         <h5>Likes: <%= post.likes_counter %></h5>
+        </div>
+        <div class = "comments">
         <h5>Comments: <%= post.comments_counter %></h5>
+        </div>
       </div>
     </li>
   <% end %>
-</ul>
-  </div>
-  <div class="btn-all-posts">
-  <%= link_to "See All Posts", user_posts_path(user_id: @user.id), class: 'btn-all-posts'%>
+   <div class="btn-all-posts">
+  <%= link_to "See All Posts", user_posts_path(user_id: @user.id), class: 'my-link'%>
 </div>
+</ul>
 </div>

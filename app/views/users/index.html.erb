@@ -3,24 +3,28 @@
 <head>
   <title>Blog App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+   <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "user", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
 </head>
 <body>
   <%= render "shared/header" %>
-  <h1>Users</h1>
-  <h2>Users List</h2>
   <ul>
   <% @users.each do |user| %>
     <li>
+        <div class = "user-info">
       <% if user.photo_url.present? %>
         <%= image_tag user.photo_url, alt: user.name %>
       <% else %>
         <!-- Display a default image or placeholder image -->
         <h6>No photo</h6>
       <% end %>
-      <%= link_to user.name, user_path(user) %>
+      <div class = "user-info-2">
+      <h3><%= link_to user.name, user_path(user), class: "my-link" %></h3>
+        <h5>Total Posts: 3</h5>
+       </div>
+      </div>
     </li>
   <% end %>
 </ul>
