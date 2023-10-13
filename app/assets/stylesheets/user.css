@@ -98,17 +98,19 @@ li {
 }
 
 .post_container {
-  margin: 2rem;
-}
-
-.post_container {
   display: flex;
   justify-content: end;
   padding-top: 5rem;
+  margin: 2rem;
 }
 
 .bio {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin: 2rem;
   padding: 2rem;
+}
+
+.post-counter {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -28,7 +28,7 @@
         </div>
         </div>
         <ul class = "comment-container">
-          <% post.comments.each do |comment| %>
+          <% post.comments.recent.each do |comment| %>
             <li class = "comment-align">
               <strong><%= comment.user.name %>:</strong> <%= comment.text %>
             </li>

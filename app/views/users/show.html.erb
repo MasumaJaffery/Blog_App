@@ -1,4 +1,4 @@
- <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "user", "data-turbo-track": "reload" %>
@@ -9,13 +9,15 @@
      <%= image_tag @user.photo_url, alt: @user.name %>
      <div class = "user-info-2">
     <h3>Name: <%= @user.name %></h3>
-        <h5>Total Posts: <%= @user.posts_counter.inspect %></h5>
-    <h4>Bio:</h4><p><%= @user.bio %></p>
+    <div class = "post-counter"><h5>Total Posts: <%= @user.posts_counter.inspect %></h5></div>
     </div>
     </div>
+    <div class = "bio">
+       <h4>Bio:</h4><p><%= @user.bio %></p>
+      </div>
        <div class = "post-info">
      <ul>
-  <% @user_posts.each do |post| %>
+  <% @user_posts.recent.each do |post| %>
     <li class = "post-border">
       <strong><%= post.title %></strong><br>
       <%= post.text %>
