@@ -4,7 +4,7 @@
 5.times do
   user = User.create!(
     name: Faker::Name.name,
-    photo_url: Faker::Avatar.image(slug: Faker::Internet.unique.username, size: "240x240"),
+    photo_url: Faker::Avatar.image(slug: Faker::Internet.unique.username, size: "120x120"),
     bio: Faker::Lorem.sentence(word_count: rand(7..15)),
     posts_counter: 0
   )

@@ -84,6 +84,8 @@ li {
 
 .comment-align {
   display: flex;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .comment-container {
@@ -97,4 +99,16 @@ li {
 
 .post_container {
   margin: 2rem;
+}
+
+.post_container {
+  display: flex;
+  justify-content: end;
+  padding-top: 5rem;
+}
+
+.bio {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  margin: 2rem;
+  padding: 2rem;
 }
