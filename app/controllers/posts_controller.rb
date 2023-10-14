@@ -4,18 +4,18 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = @user.posts
   end
-  
+
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @comment = Comment.new 
+    @comment = Comment.new
   end
 
   def new
     @user = current_user
     @post = @user.posts.build
   end
-  
+
   def create
     @user = current_user
     @post = Post.new(post_params.merge(author_id: @user.id))
@@ -33,5 +33,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text, :comments_counter, :likes_counter)
   end
-  
 end

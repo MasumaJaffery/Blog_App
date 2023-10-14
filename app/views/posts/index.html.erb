@@ -38,10 +38,11 @@
       </li>
     <% end %>
   </ul>
-
+<div class = "post-form">
+  <h3>Create a Post Here!</h3>
   <!-- Create a Form Here -->
 <%= form_with model: [@user, @post], url: user_posts_path(@user), method: :post, local: true do |f| %>
-  <div>
+  <div class = "post-form-2">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
      <%= f.label :text %><br>
@@ -49,6 +50,6 @@
     <%= f.submit 'Create Post' %>
   </div>
 <% end %>
-  <button type="button">Pagination</button>
+</div>
 </body>
 </html>

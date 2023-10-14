@@ -15,8 +15,9 @@
     </div>
     
     <p><%= @post.text %></p>
-
-    <!-- Like Form -->
+  </div>
+   <!-- Like Form -->
+    <div class = "lc">
    <%= form_with(model: @like, url: user_post_likes_path(@user, @post), method: :post) do |form| %>
   <%= form.hidden_field :user_id, value: @user.id %>
   <%= form.submit "Like" %>
@@ -29,8 +30,7 @@
       <%= form.text_area :text %><br>
       <%= form.submit "Add Comment" %><br>
     <% end %>
-  </div>
-
+    </div>
   <ul class="comment-container">
     <!-- Display Comments -->
     <% @post.comments.each do |comment| %>

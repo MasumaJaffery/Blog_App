@@ -114,3 +114,24 @@ li {
   display: flex;
   justify-content: flex-end;
 }
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  margin: 2rem;
+}
+
+.post-form-2 {
+  display: table-caption;
+}
+
+.lc {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
