@@ -1,26 +1,43 @@
 <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= render "shared/header" %>
-<div class="post_container">
-  <div class="post_info">
+<%= render "shared/header" %>
+
+<div class="post-container">
+  <div class="post-info">
     <h3><%= @post.title %> by <%= @user.name %></h3>
-     <div class = "left">
-  <div class="likes">
-    <h5>Likes: <%= @post.likes_counter %></h5>
-  </div>
-  <div class="comments">
-    <h5>Comments: <%= @post.comments_counter %></h5>
+    
+    <div class="left">
+      <div class="likes">
+        <h5>Likes: <%= @post.likes_counter %></h5>
+      </div>
+      <div class="comments">
+        <h5>Comments: <%= @post.comments_counter %></h5>
+      </div>
     </div>
-    </div>
+    
     <p><%= @post.text %></p>
+
+    <!-- Like Form -->
+   <%= form_with(model: @like, url: user_post_likes_path(@user, @post), method: :post) do |form| %>
+  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.submit "Like" %>
+<% end %>
+
+    <!-- Comment Form -->
+<%= form_with(model: [@user, @post, @comment], url: user_post_comments_path(@user, @post), method: :post) do |form| %>
+      <h2>Add a comment</h2>
+      <%= form.label :text %>
+      <%= form.text_area :text %><br>
+      <%= form.submit "Add Comment" %><br>
+    <% end %>
   </div>
-  </div>
-    <ul class = "comment-container">
-      <% @post.comments.each do |comment| %>
-        <li class = "comment-align">
-          <strong><%= comment.user.name %>:</strong>
-          <%= comment.text %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+
+  <ul class="comment-container">
+    <!-- Display Comments -->
+    <% @post.comments.each do |comment| %>
+      <li class="comment-align">
+        <strong><%= comment.user.name %>:</strong>
+        <%= comment.text %>
+      </li>
+    <% end %>
+  </ul>
 </div>
