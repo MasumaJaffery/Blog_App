@@ -1,16 +1,41 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-<title>Blog App</title> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-</head>  
-<body>  
-    <h1>Posts</h1>
-    <h2>Posts List for User <%= @user.name %></h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <%= render "shared/header" %>
+  <div class="user-info">
+  <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
+     <div class = "user-info-2">
+    <h3>Name: <%= @user.name %></h3>
+        <div class = "post-counter"><h5>Total Posts: 3</h5></div>
+    </div>
+    
+    </div>
   <ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, user_post_path(@user, post) %></li>
-  <% end %>
-</ul>
-</body>  
-</html>  
+    <% @posts.each do |post| %>
+      <li class = "post-border">
+        <h3><%= link_to post.title, user_post_path(@user, post), class: 'my-link' %></h3>
+         <p><%= post.text %></p>
+          <div class="left">
+        <div class = "likes">
+        <h5>Likes: <%= post.likes_counter %></h5>
+        </div>
+        <div class = "comments">
+        <h5>Comments: <%= post.comments_counter %></h5>
+        </div>
+        </div>
+        <ul class = "comment-container">
+          <% post.comments.recent.each do |comment| %>
+            <li class = "comment-align">
+              <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

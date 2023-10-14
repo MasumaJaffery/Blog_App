@@ -1,13 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Blog App</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <h2>User Details</h2>
-  <h4>Name: <%= @user.name %></h4>
-  <p>Bio: <%= @user.bio %></p>
-  <h5>Total Posts: <%= @user.posts_counter %></h5>
-</body>
-</html>
+<%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "user", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+<%= render "shared/header" %>
+<div class="container_user">
+  <div class="user-info">
+     <%= image_tag @user.photo_url, alt: @user.name %>
+     <div class = "user-info-2">
+    <h3>Name: <%= @user.name %></h3>
+    <div class = "post-counter"><h5>Total Posts: 3</h5></div>
+    </div>
+    </div>
+    <div class = "bio">
+       <h4>Bio:</h4><p><%= @user.bio %></p>
+      </div>
+       <div class = "post-info">
+     <ul>
+  <% @user_posts.recent.each do |post| %>
+    <li class = "post-border">
+      <strong><%= post.title %></strong><br>
+      <%= post.text %>
+      <div class="left">
+        <div class = "likes">
+        <h5>Likes: <%= post.likes_counter %></h5>
+        </div>
+        <div class = "comments">
+        <h5>Comments: <%= post.comments_counter %></h5>
+        </div>
+      </div>
+    </li>
+  <% end %>
+   <div class="btn-all-posts">
+  <%= link_to "See All Posts", user_posts_path(user_id: @user.id), class: 'my-link'%>
+</div>
+</ul>
+</div>

@@ -1,43 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# Creating 5 users
-5.times do |i|
-    user = User.create!(
-      email: "user#{i + 1}@example.com",
-      name: "User #{i + 1}",
-      bio: "This is the bio for User #{i + 1}.",
-      photo: "https://example.com/user#{i + 1}.jpg"
+# Ensure you have 'faker' gem included in your Gemfile and installed
+
+# Create 5 users who will create posts and comments
+5.times do
+  user = User.create!(
+    name: Faker::Name.name,
+    photo_url: Faker::Avatar.image(slug: Faker::Internet.unique.username, size: "120x120"),
+    bio: Faker::Lorem.sentence(word_count: rand(7..15)),
+    posts_counter: 0
+  )
+
+  # Create 3 posts for each user
+  3.times do
+    post = user.posts.create!(
+      title: Faker::Book.title,
+      text: Faker::Lorem.paragraph(sentence_count: rand(10..20)),
+      comments_counter: 0,
+      likes_counter: 0
     )
-  
-    # For each user, creating 3 posts
-    3.times do |j|
-      post = Post.create!(
-        title: "Post #{j + 1} by User #{i + 1}",
-        body: "This is the body of Post #{j + 1} by User #{i + 1}.",
-        author: user
+
+    # Create 5 comments for each post by the same user
+    5.times do
+      post.comments.create!(
+        user: user, # The same user is creating the comment
+        text: Faker::Lorem.sentence(word_count: rand(1..10))
       )
-  
-      # For each post, creating 2 comments
-      2.times do |k|
-        Comment.create!(
-          content: "Comment #{k + 1} on Post #{j + 1} by User #{i + 1}",
-          user: user,
-          post: post
-        )
-      end
-  
-      # For each post, creating 2 likes
-      2.times do
-        user_for_like = User.where.not(id: user.id).sample
-        Like.create!(
-          user: user_for_like,
-          post: post
-        )
-      end
     end
   end
+end

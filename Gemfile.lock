@@ -69,6 +69,8 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     bindex (0.8.1)
+    bogus (0.1.6)
+      dependor (>= 0.0.4)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -87,13 +89,17 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dependor (1.0.1)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -207,6 +213,12 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -242,10 +254,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bogus
   bootsnap
   capybara
   debug
   factory_bot_rails
+  faker
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -255,6 +269,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers (~> 5.0)
+  simplecov
   sprockets-rails
   stimulus-rails
   turbo-rails

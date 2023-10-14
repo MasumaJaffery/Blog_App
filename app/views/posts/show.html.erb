@@ -1,14 +1,26 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-<title>Blog App</title> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-</head>  
-<body>  
-    <h1>Posts</h1>
-    <h2><%= @post.title %></h2>
-    <p><%= @post.text %></p>
-    <h5>Comments: <%= @post.comments_counter %></h5>
+<%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= render "shared/header" %>
+<div class="post_container">
+  <div class="post_info">
+    <h3><%= @post.title %> by <%= @user.name %></h3>
+     <div class = "left">
+  <div class="likes">
     <h5>Likes: <%= @post.likes_counter %></h5>
-</body>  
-</html>  
+  </div>
+  <div class="comments">
+    <h5>Comments: <%= @post.comments_counter %></h5>
+    </div>
+    </div>
+    <p><%= @post.text %></p>
+  </div>
+  </div>
+    <ul class = "comment-container">
+      <% @post.comments.each do |comment| %>
+        <li class = "comment-align">
+          <strong><%= comment.user.name %>:</strong>
+          <%= comment.text %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

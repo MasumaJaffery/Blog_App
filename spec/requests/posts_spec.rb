@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'checks If a correct template was rendered' do
-      get user_posts_path(user_id: @user.id)
+      get user_posts_path(user_id: @user.id, id: @post.id)
       expect(response).to render_template(:index)
     end
 

@@ -54,9 +54,12 @@ group :development, :test do
   # Add RSpec for testing
   gem 'factory_bot_rails'
   # Add gem for controller Testing.
+  gem 'bogus'
+  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', require: false
 end
 
 group :development do
