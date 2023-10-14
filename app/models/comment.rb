@@ -8,6 +8,6 @@ class Comment < ApplicationRecord
     post.increment!(:comments_counter)
   end
 
-  validates :content, presence: true
+  validates :text, presence: true
   scope :recent, -> { order(created_at: :desc).limit(5) }
 end

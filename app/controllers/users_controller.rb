@@ -8,4 +8,8 @@ class UsersController < ApplicationController
     @user.posts_counter = @user.posts.count
     @user_posts = @user.posts
   end
+
+  def current_user
+    User.first
+  end
 end

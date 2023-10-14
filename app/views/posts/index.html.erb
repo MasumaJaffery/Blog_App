@@ -1,3 +1,4 @@
+<!-- app/views/posts/index.html.erb -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,29 +8,29 @@
 <body>
   <%= render "shared/header" %>
   <div class="user-info">
-  <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
-     <div class = "user-info-2">
-    <h3>Name: <%= @user.name %></h3>
-        <div class = "post-counter"><h5>Total Posts: 3</h5></div>
+    <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
+    <div class="user-info-2">
+      <h3>Name: <%= @user.name %></h3>
+      <div class="post-counter"><h5>Total Posts: <%= @posts.count %></h5></div>
     </div>
-    
-    </div>
+  </div>
+
   <ul>
     <% @posts.each do |post| %>
-      <li class = "post-border">
+      <li class="post-border">
         <h3><%= link_to post.title, user_post_path(@user, post), class: 'my-link' %></h3>
-         <p><%= post.text %></p>
-          <div class="left">
-        <div class = "likes">
-        <h5>Likes: <%= post.likes_counter %></h5>
+        <p><%= post.text %></p>
+        <div class="left">
+          <div class="likes">
+            <h5>Likes: <%= post.likes_counter %></h5>
+          </div>
+          <div class="comments">
+            <h5>Comments: <%= post.comments_counter %></h5>
+          </div>
         </div>
-        <div class = "comments">
-        <h5>Comments: <%= post.comments_counter %></h5>
-        </div>
-        </div>
-        <ul class = "comment-container">
+        <ul class="comment-container">
           <% post.comments.recent.each do |comment| %>
-            <li class = "comment-align">
+            <li class="comment-align">
               <strong><%= comment.user.name %>:</strong> <%= comment.text %>
             </li>
           <% end %>
@@ -37,5 +38,18 @@
       </li>
     <% end %>
   </ul>
+<div class = "post-form">
+  <h3>Create a Post Here!</h3>
+  <!-- Create a Form Here -->
+<%= form_with model: [@user, @post], url: user_posts_path(@user), method: :post, local: true do |f| %>
+  <div class = "post-form-2">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+     <%= f.label :text %><br>
+    <%= f.text_field :text %>
+    <%= f.submit 'Create Post' %>
+  </div>
+<% end %>
+</div>
 </body>
 </html>
