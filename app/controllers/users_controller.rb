@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(posts: :comments).find(params[:id])
     @user.posts_counter = @user.posts.count
-    @user_posts = @user.posts
+    @user_posts = @user.posts.includes(:comments)
   end
 
   def current_user
