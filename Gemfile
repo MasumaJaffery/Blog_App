@@ -62,6 +62,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 5.0'
   gem "webdrivers"
   gem 'simplecov', require: false
+  gem 'regexp_parser', '2.8.1'
 end
 
 group :development do
