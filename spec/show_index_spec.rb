@@ -5,6 +5,11 @@ RSpec.describe 'Posts', type: :feature do
     @user = FactoryBot.create(:user, name: 'Masuma', photo_url: 'https://robohash.org/taryn.wehner.png?size=120x120&set=set1', posts_counter: 0)
     @post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
     @comment = FactoryBot.create(:comment, text: 'Sample comment', user: @user, post: @post)
+    @second_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
+    @third_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
+    @fourth_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
+    @fifth_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
+    @sixth_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
   end
 
   describe 'index page' do
@@ -46,6 +51,11 @@ RSpec.describe 'Posts', type: :feature do
     it 'can see how many likes a post has.' do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content("Likes: #{@post.likes_counter}")
+    end
+
+    it 'can see a section for pagination if there are more posts than fit on the view.' do
+      visit user_posts_path(user_id: @user.id)
+      expect(page).to have_xpath(".//div[@class='pagination']")
     end
   end
 end
