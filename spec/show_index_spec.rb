@@ -37,5 +37,10 @@ RSpec.describe 'Posts', type: :feature do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content(@comment.text)
     end
+    
+    it 'can see how many comments a post has.' do
+      visit user_posts_path(user_id: @user.id)
+      expect(page).to have_content("Comments: #{@post.comments_counter}")
+    end
   end
 end
