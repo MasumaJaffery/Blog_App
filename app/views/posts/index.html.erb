@@ -11,7 +11,7 @@
     <img src="<%= @user.photo_url %>" alt="<%= @user.name %>'s Photo">
     <div class="user-info-2">
       <h3>Name: <%= @user.name %></h3>
-      <div class="post-counter"><h5>Total Posts: <%= @posts.count %></h5></div>
+      <div class="post-counter"><h5>Total Posts: <%= @user.posts_counter %></h5></div>
     </div>
   </div>
 
@@ -50,6 +50,9 @@
     <%= f.submit 'Create Post' %>
   </div>
 <% end %>
+</div>
+<div class="pagination">
+  <%= will_paginate @posts%>
 </div>
 </body>
 </html>
