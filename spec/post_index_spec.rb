@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :feature do
   before do
-    @user = FactoryBot.create(:user, name: 'Masuma', photo_url: 'https://robohash.org/taryn.wehner.png?size=120x120&set=set1', posts_counter: 0)
+    @user = FactoryBot.create(:user, name: 'Masuma',
+                                     photo_url: 'https://robohash.org/taryn.wehner.png?size=120x120&set=set1', posts_counter: 0)
     @post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
     @comment = FactoryBot.create(:comment, text: 'Sample comment', user: @user, post: @post)
     @second_post = FactoryBot.create(:post, title: 'Sample Post', text: 'Lorem ipsum', author: @user)
@@ -22,7 +23,7 @@ RSpec.describe 'Posts', type: :feature do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content(@user.name)
     end
-    
+
     it 'can see the number of posts the user has written.' do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content("Total Posts: #{@user.posts_counter}")
@@ -42,12 +43,12 @@ RSpec.describe 'Posts', type: :feature do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content(@comment.text)
     end
-    
+
     it 'can see how many comments a post has.' do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content("Comments: #{@post.comments_counter}")
     end
-    
+
     it 'can see how many likes a post has.' do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_content("Likes: #{@post.likes_counter}")
@@ -57,7 +58,7 @@ RSpec.describe 'Posts', type: :feature do
       visit user_posts_path(user_id: @user.id)
       expect(page).to have_xpath(".//div[@class='pagination']")
     end
-    
+
     it 'redirects to a post\'s show page' do
       visit user_posts_path(user_id: @user.id)
       first('a.my-link').click

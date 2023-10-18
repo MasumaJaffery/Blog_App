@@ -58,11 +58,12 @@ group :development, :test do
   gem 'bogus'
   gem 'faker'
   gem 'rails-controller-testing'
+  gem 'regexp_parser', '2.8.1'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
-  gem "webdrivers"
   gem 'simplecov', require: false
-  gem 'regexp_parser', '2.8.1'
+  gem 'webdrivers'
+  gem 'devise'
 end
 
 group :development do
