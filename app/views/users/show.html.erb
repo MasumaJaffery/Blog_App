@@ -19,7 +19,7 @@
      <ul>
   <% @user_posts.recent.each do |post| %>
     <li class = "post-border">
-      <strong><%= post.title %></strong><br>
+      <strong><%= link_to post.title, user_post_path(@user.id, post.id), class: "my-link" %></strong><br>
       <%= post.text %>
       <div class="left">
         <div class = "likes">
