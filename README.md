@@ -144,6 +144,11 @@ You can deploy this project using:
 - Twitter: [@MasumaJaffery](https://twitter.com/MasumaJaffery)
 - LinkedIn: [Masuma Jaffery](https://www.linkedin.com/in/masuma-jaffery-797a29256/)
   
+👤 **Javivy**
+
+- GitHub: [@Javivy](https://github.com/Javivy)
+- LinkedIn: [Javier Vargas](https://www.linkedin.com/in/javier-alejandro-vargas-ortega)
+- Twitter [@Javivy_2803](https://twitter.com/Javivy_2803)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
