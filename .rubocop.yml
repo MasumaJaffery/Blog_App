@@ -9,6 +9,7 @@ AllCops:
     - "node_modules/**/*"
 
   DisplayCopNames: true
+  SuggestExtensions: false
 
 Layout/LineLength:
   Max: 500
