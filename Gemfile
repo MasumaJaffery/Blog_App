@@ -56,6 +56,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Add gem for controller Testing.
   gem 'bogus'
+  gem 'devise'
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'regexp_parser', '2.8.1'
@@ -63,7 +64,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false
   gem 'webdrivers'
-  gem 'devise'
 end
 
 group :development do

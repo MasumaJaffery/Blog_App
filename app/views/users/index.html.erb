@@ -15,7 +15,7 @@
     <li>
         <div class = "user-info">
       <% if user.photo_url.present? %>
-        <%= image_tag user.photo_url, alt: user.name %>
+      <%= image_tag(@user.photo_url.presence || 'https://assets-global.website-files.com/5dbb30f00775d4c32191a4df/5e18a9053ee8b2c791075c74_smalllogo.png', alt: @user.name) %>
       <% else %>
         <!-- Display a default image or placeholder image -->
         <h6>No photo</h6>

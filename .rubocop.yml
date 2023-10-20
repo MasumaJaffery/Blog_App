@@ -7,11 +7,11 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-
+  SuggestExtensions: false
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 128
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
