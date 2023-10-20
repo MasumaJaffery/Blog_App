@@ -57,6 +57,7 @@ group :development, :test do
   # Add gem for controller Testing.
   gem 'bogus'
   gem 'devise'
+  gem 'cancancan'
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'regexp_parser', '2.8.1'
