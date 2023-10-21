@@ -55,10 +55,12 @@ group :development, :test do
   # Add RSpec for testing
   gem 'factory_bot_rails'
   # Add gem for controller Testing.
+  gem 'active_model_serializers'
   gem 'bogus'
   gem 'cancancan'
   gem 'devise'
   gem 'faker'
+  gem 'jwt'
   gem 'rails-controller-testing'
   gem 'regexp_parser', '2.8.1'
   gem 'rspec-rails', '~> 5.0'

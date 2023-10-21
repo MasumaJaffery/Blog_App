@@ -10,5 +10,11 @@ resources :users, only: %i[index show] do
     resources :comments, only: %i[index show new create edit update destroy]
     resources :likes, only: %i[index show create destroy]
   end
+  namespace :api, defaults: { format: :json } do
+    resources :sessions
+    resources :posts, only: [:index] do
+      resources :comments, only: [:index, :create]
+    end
+  end
 end  
 end
