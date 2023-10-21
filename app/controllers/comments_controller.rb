@@ -4,12 +4,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
-    if @comment.destroy
-      @post.decrement!(:comments_counter)
-      redirect_to user_post_path(current_user, @post), notice: "Comment deleted sucessfully."
-    else
-      redirect_to user_post_path(current_user, @post), notice: "Comment deleted sucessfully."
-    end
+    @post.decrement!(:comments_counter) if @comment.destroy
+    redirect_to user_post_path(current_user, @post), notice: 'Comment deleted sucessfully.'
   end
 
   def create

@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     author = @post.author
-  
+
     if @post.destroy
       author.decrement(:posts_counter)
       redirect_to user_posts_path(id: author.id), notice: 'Post deleted!'
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = current_user
   end
