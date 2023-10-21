@@ -37,6 +37,10 @@
       <li class="comment-align">
         <strong><%= comment.user.name %>:</strong>
         <%= comment.text %>
+        <%= current_user.role %>
+        <% if current_user == comment.user || current_user.role == 'admin' %>
+          <%= render partial: 'comments/delete_form', locals: { comment: comment } %>
+        <% end %>
       </li>
     <% end %>
   </ul>
