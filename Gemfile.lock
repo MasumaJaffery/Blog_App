@@ -129,8 +129,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json-schema (3.0.0)
+      addressable (>= 2.8)
     jsonapi-renderer (0.2.2)
-    jwt (2.7.1)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -230,6 +231,20 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.12.1)
+    rswag (2.11.0)
+      rswag-api (= 2.11.0)
+      rswag-specs (= 2.11.0)
+      rswag-ui (= 2.11.0)
+    rswag-api (2.11.0)
+      railties (>= 3.1, < 7.2)
+    rswag-specs (2.11.0)
+      activesupport (>= 3.1, < 7.2)
+      json-schema (>= 2.2, < 4.0)
+      railties (>= 3.1, < 7.2)
+      rspec-core (>= 2.14)
+    rswag-ui (2.11.0)
+      actionpack (>= 3.1, < 7.2)
+      railties (>= 3.1, < 7.2)
     rubyzip (2.3.2)
     selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -299,13 +314,13 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
-  jwt
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
   rails-controller-testing
   regexp_parser (= 2.8.1)
   rspec-rails (~> 5.0)
+  rswag
   selenium-webdriver
   shoulda-matchers (~> 5.0)
   simplecov

@@ -60,7 +60,7 @@ group :development, :test do
   gem 'cancancan'
   gem 'devise'
   gem 'faker'
-  gem 'jwt'
+  gem 'rswag'
   gem 'rails-controller-testing'
   gem 'regexp_parser', '2.8.1'
   gem 'rspec-rails', '~> 5.0'
