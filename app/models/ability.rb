@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     # ||= assigns a user to new user if its value is nil. 
-    user ||= User.new if user.guest?
+    user ||= User.new
     if user.admin?
       # :manage Perform CRUD operations
       can :manage, :all 

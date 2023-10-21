@@ -27,6 +27,12 @@
   </div>
 
   <div class="field">
+  <%= f.label :role %><br />
+  <%= f.select :role, [['User', 'user'], ['Admin', 'admin']], {}, { autocomplete: "off" }
+</div>
+
+
+  <div class="field">
     <%= f.label :posts_counter %><br />
     <%= f.number_field :posts_counter, autocomplete: "off" %>
   </div>

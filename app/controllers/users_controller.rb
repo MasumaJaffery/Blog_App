@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user_posts = @user.posts
   end
 
-  def current_user
-    User.first
+  def set_default_role
+    self.role ||= :user
   end
 end

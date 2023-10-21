@@ -27,6 +27,11 @@
           <div class="comments">
             <h5>Comments: <%= post.comments_counter %></h5>
           </div>
+        <%= form_with model: post, url: user_post_path(@user, post), method: :delete, data: { confirm: 'Are you sure?' } do |f| %>
+  <%= f.submit 'Delete' %>
+<% end %>
+
+
         </div>
         <ul class="comment-container">
           <% post.comments.recent.each do |comment| %>
