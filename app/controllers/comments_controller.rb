@@ -1,6 +1,17 @@
 class CommentsController < ApplicationController
   before_action :set_post
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    if @comment.destroy
+      @post.decrement!(:comments_counter)
+      redirect_to user_post_path(current_user, @post), notice: "Comment deleted sucessfully."
+    else
+      redirect_to user_post_path(current_user, @post), notice: "Comment deleted sucessfully."
+    end
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
