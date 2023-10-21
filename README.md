@@ -38,10 +38,6 @@
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> So you want to lear more about the tech we have used for this project?
-
-<details>
-
 <details>
   <summary>Server</summary>
   <ul>
