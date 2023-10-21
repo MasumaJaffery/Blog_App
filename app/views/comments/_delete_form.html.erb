@@ -1,0 +1,3 @@
+<%= form_for comment, url: user_post_comment_path(current_user, @post, comment), method: :delete, data: { confirm: "Are you sure? The comment will be permanently deleted" } do |f| %>
+  <%= f.submit "Delete" %>
+<% end %>
